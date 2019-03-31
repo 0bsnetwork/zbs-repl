@@ -1,10 +1,10 @@
 {
-  "name": "@waves/waves-repl",
+  "name": "@0bsnetwork/zbs-repl",
   "version": "2.2.7",
-  "description": "Javascript console to interact with waves blockchain. React component",
+  "description": "Javascript console to interact with 0bsNetwork blockchain. React component",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "repository": "https://github.com/wavesplatform/waves-repl",
+  "repository": "https://github.com/0bsnetwork/zbs-repl",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development",
@@ -12,7 +12,7 @@
     "dist": "rimraf dist && tsc && npm run copyCssSvg",
     "prepublishOnly": "npm run dist"
   },
-  "author": "wavesplatform",
+  "author": "0bsnetwork",
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.3.2",
@@ -20,7 +20,7 @@
     "@waves/ride-js": "^0.17.4"
   },
   "dependencies": {
-    "@waves/waves-transactions": "^3.3.9",
+    "@0bsnetwork/zbs-transactions": "^3.3.11",
     "axios": "^0.18.0",
     "babylon": "^6.18.0",
     "babylon-walk": "^1.0.2",

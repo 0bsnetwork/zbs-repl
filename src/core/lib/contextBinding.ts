@@ -1,6 +1,6 @@
 import { getContainer } from './run';
 import { WavesConsoleAPI } from '../../WavesConsoleAPI';
-import { TTx, libs } from '@waves/waves-transactions/';
+import { TTx, libs } from '@0bsnetwork/zbs-transactions/';
 import axios from 'axios';
 
 import { Console } from '..';
@@ -54,10 +54,10 @@ const getApiMethodWrappers = (consoleApi: WavesConsoleAPI, console: Console): IA
         broadcast: async (tx: TTx, apiBaseParam?: string) => {
             const apiBase = new URL(apiBaseParam || WavesConsoleAPI.env.API_BASE).href;
 
-            const nodes = ['https://nodes.wavesplatform.com/', 'https://testnodes.wavesnodes.com/'];
+            const nodes = ['https://nodes.0bsnetwork.com/', 'https://nodes.testnet-0bsnetwork.com/'];
 
             const pushExplorerLinkToConsole = (href: string) => {
-                const htmlString = `<a href="${href}" target="_blank">Link to transaction in wavesexplorer</a>`;
+                const htmlString = `<a href="${href}" target="_blank">Link to transaction in 0bsNetwork Explorer</a>`;
 
                 console.push({
                     html: true,
@@ -68,16 +68,16 @@ const getApiMethodWrappers = (consoleApi: WavesConsoleAPI, console: Console): IA
 
             const generateExplorerLinkToTx = (networkByte: string, txId: number) => {
                 return (networkByte === 'W')
-                    ? `https://wavesexplorer.com/tx/${txId}`
-                    : `https://wavesexplorer.com/testnet/tx/${txId}`;
+                    ? `https://explorer.testnet-0bsnetwork.com/tx/${txId}`
+                    : `https://explorer.testnet-0bsnetwork.com/testnet/tx/${txId}`;
             };
 
 
             const res = await consoleApi.broadcast(tx, apiBase);
 
             if (nodes.includes(apiBase)) {
-                const networkByte = apiBase === 'https://nodes.wavesplatform.com/'
-                    ? 'W'
+                const networkByte = apiBase === 'https://nodes.0bsnetwork.com/'
+                    ? 'Z'
                     : 'T';
 
                 const href = generateExplorerLinkToTx(networkByte, res.id);
@@ -87,7 +87,7 @@ const getApiMethodWrappers = (consoleApi: WavesConsoleAPI, console: Console): IA
                 try {
                     let networkByte = await getNetworkByte(apiBase);
 
-                    const isWavesNetwork = networkByte === 'W' || networkByte === 'T';
+                    const isWavesNetwork = networkByte === 'Z' || networkByte === 'T';
 
                     if (isWavesNetwork) {
                         const href = generateExplorerLinkToTx(networkByte, res.id);

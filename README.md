@@ -1,10 +1,10 @@
 # REPL
 ## About
-This repository contains javascript console for waves blockchain.
-It is built on top of [jsconsole](https://github.com/remy/jsconsole) and have predefined functions to work with waves
+This repository contains javascript console for 0bsNetwork blockchain.
+It is built on top of [jsconsole](https://github.com/remy/jsconsole) and have predefined functions to work with zbs
 ## Builtin functions
 #### JS lib
-Console uses [waves-transactions](https://wavesplatform.github.io/waves-transactions/) library. Top level library functions are bound to console global scope.
+Console uses zbs-transations library. Top level library functions are bound to console global scope.
 The difference is that in console, seed argument is equal to env.SEED by default. You need to pass null explicitly if you only want to create transaction and not to sign it
 E.x.:
 ##### Console
@@ -27,11 +27,11 @@ const signedTx = transfer({amount: 100, recipient: '3MyAGEBuZGDKZDzYn6sbh2noqk9u
 
 ```
 #### Additional functions
-Broadcast signed tx using node from global variable 
+Broadcast signed tx using node from global variable
 ```javascript
 const resp = await broadcast(signedTx)
 ```
-Deploy current open contract using node from global variable 
+Deploy current open contract using node from global variable
 ```javascript
 const resp = deploy()
 ```
@@ -55,7 +55,7 @@ const contractText = contract()
 
 Keys
 ```javascript
-address(seed = env.SEED) // Address from seed. 
+address(seed = env.SEED) // Address from seed.
 keyPair(seed = env.SEED) // Keypair from seed
 publicKey(seed = env.SEED) // Public key from seed
 privateKey(seed = env.SEED) // Private key from seed
@@ -64,7 +64,7 @@ privateKey(seed = env.SEED) // Private key from seed
 ```javascript
 env.SEED // Default seed
 env.CHAIN_ID // Default network byte
-env.API_BASE // Node url 
+env.API_BASE // Node url
 env.editors // Open editor tabs info
 ```
 ## Usage
@@ -77,7 +77,7 @@ Starts dev server
 ```typescript jsx
 import * as React from 'react';
 import {render} from 'react-dom';
-import {Repl} from 'waves-repl';
+import {Repl} from 'zbs-repl';
 
 class App extends React.Component {
     public consoleRef = React.createRef<Repl>();
@@ -85,7 +85,7 @@ class App extends React.Component {
     componentDidMount(){
         // Get console instance
         const console = this.consoleRef.current!;
-        
+
         // Access to console api
         (global as any)['updateEnv'] = console.updateEnv;
         (global as any)['API'] = console.API;
@@ -93,7 +93,7 @@ class App extends React.Component {
 
         (global as any)['updateEnv']({
             SEED: 'abracadabra',
-            API_BASE: 'https://testnodes.wavesnodes.com',
+            API_BASE: 'https://nodes.testnet-0bsnetwork.com',
             CHAIN_ID: 'T',
             file: () => 'Placeholder file content'
         });

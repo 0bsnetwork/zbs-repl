@@ -1,5 +1,5 @@
-import * as wt from '@waves/waves-transactions';
-import { libs, TTx, TTxParams, TSeedTypes } from '@waves/waves-transactions/';
+import * as wt from '@0bsnetwork/zbs-transactions';
+import { libs, TTx, TTxParams, TSeedTypes } from '@0bsnetwork/zbs-transactions/';
 import { compile as cmpl } from '@waves/ride-js';
 
 const {keyPair, address} = libs.crypto;
@@ -300,7 +300,7 @@ export class WavesConsoleAPIHelp {
         },
         broadcast: {
             summary: '' +
-                'Sends transaction to the Waves network using REST API',
+                'Sends transaction to the Zbs network using REST API',
             description: '' +
                 'Returns Promise.',
             params: ['tx', 'apiBase']
@@ -453,7 +453,7 @@ export class WavesConsoleAPIHelp {
      */
     public static types: { [key: string]: IWavesConsoleAPIHelpVariable } = {
         tx: {
-            summary: 'Transaction object obtained from WavesTransactions library',
+            summary: 'Transaction object obtained from ZbsTransactions library',
             type: 'object'
         },
         code: {
@@ -483,16 +483,16 @@ export class WavesConsoleAPIHelp {
         },
         apiBase: {
             optional: true,
-            summary: 'Url of the node. E.x. "https://nodes.wavesplatform.com". (optional, env.API_BASE by default)',
+            summary: 'Url of the node. E.x. "https://nodes.0bsnetwork.com". (optional, env.API_BASE by default)',
             type: 'string'
         },
         nodeUrl: {
             optional: true,
-            summary: 'Url of the node. E.x. "https://nodes.wavesplatform.com". (optional, env.API_BASE by default)',
+            summary: 'Url of the node. E.x. "https://nodes.0bsnetwork.com". (optional, env.API_BASE by default)',
             type: 'string'
         },
         address: {
-            summary: 'Waves address as base58 string',
+            summary: 'Zbs address as base58 string',
             type: 'string'
         },
         key: {
